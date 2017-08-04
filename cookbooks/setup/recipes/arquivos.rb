@@ -4,14 +4,12 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
-file '/etc/motd' do
-  content "Servidor de teste Chef
-  HOSTNAME: #{node['hostname']}
-  IPADDRESS: #{node['ipaddress']}
-  MEMORY: #{node['memory']['total']}
-  "
+template '/etc/motd' do
+  source 'motd.erb'
   owner 'root'
-  group 'root'
   mode '0755'
+  variables(
+    :name => 'Eduardo'
+  )
   action :create
 end

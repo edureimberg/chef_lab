@@ -8,10 +8,9 @@ package 'apache2' do
   action :install
 end
 
-file '/var/www/html/index.html' do
-  content '<h1>Página de teste</h1>'
+template '/var/www/html/index.html' do
+  source 'index.html.erb'
   owner 'root'
-  group 'root'
   mode '0755'
   action :create
 end
